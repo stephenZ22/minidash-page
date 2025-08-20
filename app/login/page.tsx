@@ -34,12 +34,9 @@ export default function Login() {
       }
 
       const data = await res.json()
-      console.log('✅ Login success:', data)
       const token = data.data
-      console.log("xxxxxxx:",token)
       Cookies.set('jwt_token', token, { expires: 7, path: '/' }) 
-      // 这里可以根据需要跳转
-      router.push('/projects')
+      router.push('/board')
 
     } catch (err: any) {
       setError(err.message)
