@@ -1,5 +1,4 @@
 "use client";
-import { FC } from "react";
 import { DashCardItem } from "./DashCard";
 import DashColumn from "./DashColumn";
 
@@ -7,7 +6,7 @@ interface BoardPorps {
   user_id: number;
   cards: DashCardItem[];
 }
-const Board = ({ user_id, cards }: BoardPorps) => {
+const CardBoard = ({ user_id, cards }: BoardPorps) => {
   console.log(user_id);
   return (
     <>
@@ -26,4 +25,4 @@ const Board = ({ user_id, cards }: BoardPorps) => {
   );
 };
 
-export default Board;
+export default CardBoard;

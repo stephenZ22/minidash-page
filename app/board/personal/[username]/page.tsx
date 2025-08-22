@@ -1,4 +1,4 @@
-import Board from "@/components/ui/dashboard/Board";
+import CardBoard from "@/components/ui/dashboard/CardBoard";
 import { DashCardItem } from "@/components/ui/dashboard/DashCard";
 
 interface PagePorps {
@@ -40,7 +40,7 @@ export default async function PersonalBoard({ params }: PagePorps) {
     <>
       <h1>{current_param.username}</h1> {/* clean h1 */}
       <main className="flex min-h-screen bg-custom-login gap-16 justify-center py-16 px-8">
-        <Board user_id={1} cards={cards}></Board>
+        <CardBoard user_id={1} cards={cards}></CardBoard>
       </main>
     </>
   );
