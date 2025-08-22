@@ -1,12 +1,13 @@
-import DashCard, { DashCardItem } from "@/components/ui/dashboard/DashCard";
-import DashColumn from "@/components/ui/dashboard/DashColumn";
+import Board from "@/components/ui/dashboard/Board";
+import { DashCardItem } from "@/components/ui/dashboard/DashCard";
 
 interface PagePorps {
-  params: {
+  params: Promise<{
     username: string;
-  };
+  }>;
 }
 export default async function PersonalBoard({ params }: PagePorps) {
+  const current_param = await params;
   const cards: DashCardItem[] = [
     {
       id: 1,
@@ -37,19 +38,9 @@ export default async function PersonalBoard({ params }: PagePorps) {
 
   return (
     <>
-      <h1>{params.username}</h1> {/* clean h1 */}
+      <h1>{current_param.username}</h1> {/* clean h1 */}
       <main className="flex min-h-screen bg-custom-login gap-16 justify-center py-16 px-8">
-        <div className="flex flex-1 flex-col max-w-2xl bg-yellow-50 rounded-lg p-4 gap-3">
-          <DashColumn title="todo" cards={cards}></DashColumn>
-        </div>
-
-        <div className="flex flex-1 flex-col max-w-2xl bg-yellow-50 rounded-lg p-4 gap-3">
-          <DashColumn title="doing" cards={cards}></DashColumn>
-        </div>
-
-        <div className="flex flex-1 flex-col max-w-2xl bg-yellow-50 rounded-lg p-4 gap-3">
-          <DashColumn title="done" cards={cards}></DashColumn>
-        </div>
+        <Board user_id={1} cards={cards}></Board>
       </main>
     </>
   );

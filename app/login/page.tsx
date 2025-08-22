@@ -4,6 +4,12 @@ import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import Cookies from "js-cookie";
 
+interface CurrentUser {
+  email: string;
+  id: number;
+  name: string;
+}
+
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -35,14 +41,14 @@ export default function Login() {
 
       const data = await res.json();
       const token = data.data["token"];
-      const current_username = data.data["username"];
+      const current_user: CurrentUser = data.data["user"] as CurrentUser;
       Cookies.set("jwt_token", token, { expires: 7, path: "/" });
-      Cookies.set("current_username", current_username, {
+      Cookies.set("current_user", JSON.stringify(current_user), {
         expires: 7,
         path: "/",
       });
 
-      router.push(`/board/personal/${current_username}`);
+      router.push(`/board/personal/${current_user.name}`);
     } catch (err: any) {
       setError(err.message);
     } finally {
