@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { LogIn } from "lucide-react";
+import Cookies from "js-cookie";
 
 const sections = [
   { id: 0, color: "bg-green-200", text: "Mini Dash 功能介绍" },
@@ -14,6 +15,15 @@ const sections = [
 export default function HomePage() {
   const [page, setPage] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [login_url, setLoginUrl] = useState("/login");
+
+  useEffect(() => {
+    let userObj = null;
+    const current_user = Cookies.get("current_user");
+
+    userObj = JSON.parse(current_user);
+    setLoginUrl(userObj.name ? `/board/personal/${userObj.name}` : "/login");
+  }, []);
 
   // 监听滚轮
   useEffect(() => {
@@ -62,7 +72,7 @@ export default function HomePage() {
         ))}
       </div>
       <Link
-        href="/login"
+        href={login_url}
         className="absolute bottom-6 right-6 w-14 h-14 flex items-center justify-center
                  bg-emerald-200 text-white rounded-full shadow-lg
                  hover:bg-cyan-200
