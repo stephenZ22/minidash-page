@@ -1,5 +1,11 @@
 const Users = () => {
-  return <h1>User List Page</h1>;
+  return (
+    <>
+      <div className="flex">
+        <h1>Users</h1>
+      </div>
+    </>
+  );
 };
 
 export default Users;
