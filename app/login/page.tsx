@@ -57,7 +57,7 @@ export default function Login() {
   };
 
   return (
-    <main className="flex bg-custom-login min-h-screen justify-center items-center">
+    <main className="flex bg-custom min-h-screen justify-center items-center">
       <div className="bg-white/50 backdrop-blur-xl border border-white/30 shadow-2xl rounded-2xl p-8 w-full max-w-md">
         <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">
           Login

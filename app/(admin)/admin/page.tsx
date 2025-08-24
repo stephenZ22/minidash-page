@@ -1,8 +1,8 @@
 const AdminPage = () => {
   return (
     <>
-      <div className="flex flex-1 flex-col h-screen p-4 gap-4">
-        <h1 className="text-xl font-bold mb-2">Admin page</h1>
+      <div className="flex flex-1 flex-col h-full p-4 gap-4">
+        {/* <h1 className="text-xl font-bold mb-2">Admin page</h1> */}
 
         {/* 上半部分：Users + Projects */}
         <div className="flex flex-1 gap-4">
