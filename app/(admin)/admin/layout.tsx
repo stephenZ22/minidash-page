@@ -11,7 +11,7 @@ const Management = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex h-screen bg-custom">
       {/* Sidebar */}
-      <aside className="flex flex-col w-64 bg-white shadow-xl m-4">
+      <aside className="flex flex-col w-64 bg-white/80 shadow-xl m-4">
         {/* 顶部 Logo */}
         <Link
           href="/admin"
