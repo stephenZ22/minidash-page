@@ -1,5 +1,5 @@
-import CardBoard from "@/components/ui/dashboard/CardBoard";
-import { DashCardItem } from "@/components/ui/dashboard/DashCard";
+import CardBoard from "@/components/pages/dashboard/CardBoard";
+import { DashCardItem } from "@/components/pages/dashboard/DashCard";
 
 interface PagePorps {
   params: Promise<{
