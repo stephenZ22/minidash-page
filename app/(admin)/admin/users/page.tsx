@@ -1,12 +1,8 @@
 import { cookies } from "next/headers";
+import { DataTable } from "./data-table";
+import { columns, UserItem } from "./columns";
 
-interface UserItem {
-  id: number;
-  name: string;
-  email: string;
-}
-
-const Users = async () => {
+const getUsers = async (): Promise<UserItem[]> => {
   // 取 cookie
   const cookieStore = await cookies();
   const jwt_token = cookieStore.get("jwt_token")?.value;
@@ -17,25 +13,19 @@ const Users = async () => {
       Authorization: `Bearer ${jwt_token}`,
       "Content-Type": "application/json",
     },
-    cache: "no-store", // 🚨 确保每次请求最新数据，不用缓存
+    cache: "no-store", //确保每次请求最新数据，不用缓存
   });
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch users");
-  }
-
-  const data = await res.json();
-  const users: UserItem[] = data.data; // 假设后端返回 { data: [...] }
-
+  const json = await res.json();
+  return json.data;
+};
+const Users = async () => {
+  const users = await getUsers();
+  console.log("users:", users);
   return (
     <div className="flex h-full bg-white/60 flex-col p-4 gap-2">
       <h1 className="text-lg font-bold mb-2">Users</h1>
-      {users.map((user) => (
-        <div key={user.id} className="p-2 bg-white rounded shadow">
-          <h2 className="font-medium">{user.name}</h2>
-          <p className="text-sm text-gray-600">{user.email}</p>
-        </div>
-      ))}
+      <DataTable columns={columns} data={users} />
     </div>
   );
 };

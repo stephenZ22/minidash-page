@@ -23,7 +23,7 @@ export function AppSidebar() {
 
   return (
     <Sidebar className="w-64 h-full border-r bg-white/50 backdrop-blur-lg">
-      <SidebarContent>
+      <SidebarContent className="bg-white/50 backdrop-blur-lg">
         {/* 分组：主导航 */}
         <SidebarGroup>
           <SidebarGroupLabel>Dashboard</SidebarGroupLabel>
@@ -66,25 +66,7 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        {/* todo fix this footer */}
-        <div className="p-4 border-t">
-          {userObj.name ? (
-            <div className="text-sm">
-              Signed in as <span className="font-medium">{userObj.name}</span>
-            </div>
-          ) : (
-            <Link
-              href="/login"
-              className="flex items-center text-sm font-medium text-blue-600 hover:underline"
-            >
-              <Users className="mr-2 h-4 w-4" />
-              Sign In
-            </Link>
-          )}
-        </div>
-      </SidebarFooter>
-      <SidebarFooter>
-        <div className="p-4 text-sm text-gray-500">© 2024 Mini Dash</div>
+        <div className="p-4 text-sm text-gray-500">© Mini Dash by stephen</div>
       </SidebarFooter>
     </Sidebar>
   );
