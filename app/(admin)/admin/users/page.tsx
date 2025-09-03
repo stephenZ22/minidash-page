@@ -1,6 +1,9 @@
 import { cookies } from "next/headers";
 import { DataTable } from "./data-table";
 import { columns, UserItem } from "./columns";
+import { Input } from "@/components/ui/shadcn/input";
+import { Button } from "@/components/ui/shadcn/button";
+// import { AddUserDialog } from "./addUserDialog";
 
 const getUsers = async (): Promise<UserItem[]> => {
   // 取 cookie
@@ -25,6 +28,12 @@ const Users = async () => {
   return (
     <div className="flex h-full bg-white/60 flex-col p-4 gap-2">
       <h1 className="text-lg font-bold mb-2">Users</h1>
+      <div className="flex mb-4 gap-2">
+        <Input></Input>
+        <Button>Search</Button>
+        {/* <AddUserDialog /> */}
+      </div>
+
       <DataTable columns={columns} data={users} />
     </div>
   );
