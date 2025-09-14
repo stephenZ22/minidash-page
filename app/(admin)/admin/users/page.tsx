@@ -3,7 +3,7 @@ import { DataTable } from "./data-table";
 import { columns, UserItem } from "./columns";
 import { Input } from "@/components/ui/shadcn/input";
 import { Button } from "@/components/ui/shadcn/button";
-// import { AddUserDialog } from "./addUserDialog";
+import { AddUserDialog } from "./addUserDialog";
 
 const getUsers = async (): Promise<UserItem[]> => {
   // 取 cookie
@@ -31,7 +31,7 @@ const Users = async () => {
       <div className="flex mb-4 gap-2">
         <Input></Input>
         <Button>Search</Button>
-        {/* <AddUserDialog /> */}
+        <AddUserDialog></AddUserDialog>
       </div>
 
       <DataTable columns={columns} data={users} />
