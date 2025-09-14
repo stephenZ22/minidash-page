@@ -20,9 +20,10 @@ export default function HomePage() {
   useEffect(() => {
     let userObj = null;
     const current_user = Cookies.get("current_user");
-
-    userObj = JSON.parse(current_user);
-    setLoginUrl(userObj.name ? `/board/personal/${userObj.name}` : "/login");
+    if (current_user) {
+      userObj = JSON.parse(current_user);
+      setLoginUrl(userObj.name ? `/board/personal/${userObj.name}` : "/login");
+    }
   }, []);
 
   // 监听滚轮
